@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentUrl.includes('/blog/')) {
         // We are in blog/ folder
         window.location.href = '/';
-      } else if (currentUrl.includes('/work')) {
-        window.location.href = '/';
       } else {
         window.location.href = '/';
       }
