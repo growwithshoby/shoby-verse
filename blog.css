@@ -1,0 +1,288 @@
+.blog {
+  padding-top: 130px;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 500px;
+}
+
+.post-box {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: calc(33.333% - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  max-height: 200px;
+}
+
+.post-box:hover {
+  transform: translateY(-5px);
+}
+
+.post-image-preview {
+  height: 50%;
+}
+
+.post-image > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.post-title {
+  padding: 20px;
+  background-color: var(--primary);
+  color: #fff;
+  height: 50%;
+}
+.post-title > a {
+  color: #fff;
+}
+
+.post-title > a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+body,
+html {
+  background-color: #3d3d3d;
+}
+.blog-post {
+  background-color: var(--primary);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  align-self: flex-end;
+}
+
+.blog-post .title {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.blog-post .title h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.post-date {
+  font-size: 0.95rem;
+  color: #777;
+  font-weight: 500;
+}
+
+.post-figure {
+  margin: 0 0 2.5rem 0;
+  text-align: center;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  object-fit: cover;
+}
+
+.post-caption {
+  margin-top: 0.8rem;
+  font-size: 0.88rem;
+  color: #888;
+  font-style: italic;
+}
+
+.blog-post section h2 {
+  font-size: 1.8rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.blog-post section p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.post-navigation {
+  margin-top: 3.5rem;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+  text-align: left;
+}
+
+.back-link {
+  color: #0073e6;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.back-link:hover {
+  border-color: #0073e6;
+  color: #005bb5;
+}
+
+.toc {
+  position: fixed;
+  top: 8rem;
+  align-self: flex-start;
+  width: 300px;
+  min-width: 250px;
+  background: var(--primary);
+  padding: 1.5rem;
+  border-radius: 12px;
+  height: fit-content;
+  flex-shrink: 0;
+}
+
+.toc h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc li {
+  margin: 0.7rem 0;
+}
+
+.toc a {
+  color: #0073e6;
+  text-decoration: none;
+  font-size: 0.98rem;
+  transition: color 0.2s ease;
+}
+
+.toc a:hover {
+  color: #005bb5;
+  text-decoration: underline;
+}
+@media (max-width: 1164px) {
+  .container {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  .blog-post {
+    width: 70%;
+  }
+  .blog-post .title h1 {
+    font-size: 2.2rem;
+  }
+
+  .blog-post section h2 {
+    font-size: 1.6rem;
+  }
+
+  .blog-post section p {
+    font-size: 1rem;
+  }
+
+  .toc {
+    width: 250px;
+  }
+
+  .post-box {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .toc {
+    display: none;
+  }
+
+  .blog-post {
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: none;
+    max-width: 100%;
+    width: 90%;
+    align-self: center;
+  }
+
+  .blog-post .title h1 {
+    font-size: 2rem;
+  }
+
+  .blog-post section h2 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+
+  .blog-post section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .post-navigation {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .post-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-top: 0;
+  }
+  .post {
+    padding-top: 70px;
+  }
+  .blog-post {
+    padding: 1rem;
+  }
+
+  .blog-post .title h1 {
+    font-size: 1.8rem;
+  }
+
+  .blog-post section h2 {
+    font-size: 1.3rem;
+  }
+}
