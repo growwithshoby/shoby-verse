@@ -20,7 +20,7 @@
     "rewrites": [
       { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
       { "source": "/404", "destination": "/404.html" },
-      { "source": "/blog/post1", "destination": "/blog/post1.html" },
+      { "source": "/blog/top-five-seo-practice", "destination": "/blog/top-five-seo-practice.html" },
       { "source": "/blog", "destination": "/blog.html" },
       { "source": "**", "destination": "/index.html" }
     ]
