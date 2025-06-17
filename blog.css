@@ -1,10 +1,6 @@
 body,
 html {
-  background-color: #353333
-}
-.nav-bar,
-footer {
-  background-color: #1f1f1f;
+  background-color: #2d2d2d;
 }
 .blog {
   padding-top: 80px;
@@ -163,7 +159,6 @@ footer {
   top: 8rem; */
   align-self: flex-start;
   width: 100%;
-  padding: 1.5rem;
 }
 
 .toc h3 {
@@ -183,7 +178,7 @@ footer {
 }
 
 .toc a {
-  color: #0073e6;
+  color: #7aa5cf;
   text-decoration: none;
   font-size: 0.98rem;
   transition: color 0.2s ease;
@@ -213,10 +208,6 @@ footer {
     font-size: 1rem;
   }
 
-  .toc {
-    width: 250px;
-  }
-
   .post-box {
     width: calc(50% - 20px);
   }
@@ -227,12 +218,6 @@ footer {
     flex-direction: column;
     padding: 0;
   }
-
-  .toc {
-    position: static;
-    width: 100%;
-  }
-
   .blog-post {
     border-radius: 8px;
     box-shadow: none;
