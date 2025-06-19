@@ -1,6 +1,9 @@
+body,
+html {
+  background-color: #2d2d2d;
+}
 .blog {
-  padding-top: 130px;
-  padding-bottom: 100px;
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -28,7 +31,7 @@
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.3s ease;
-  max-height: 200px;
+  max-height: 220px;
 }
 
 .post-box:hover {
@@ -39,9 +42,9 @@
   height: 50%;
 }
 
-.post-image > img {
+.post-image-preview > img {
   width: 100%;
-  height: 100%;
+  height: 250%;
   display: block;
   object-fit: cover;
 }
@@ -68,17 +71,12 @@
   margin: 0 auto;
   align-items: flex-start;
 }
-body,
-html {
-  background-color: #3d3d3d;
-}
 .blog-post {
-  background-color: var(--primary);
-  padding: 2rem;
+  background-color: #1f1f1f;
+  padding: 2.5rem;
   border-radius: 12px;
   width: 100%;
-  max-width: 800px;
-  align-self: flex-end;
+  align-self: center;
 }
 
 .blog-post .title {
@@ -106,11 +104,12 @@ html {
 }
 
 .post-image {
-  width: 100%;
+  width: 70%;
   height: auto;
   border-radius: 10px;
   display: block;
   object-fit: cover;
+  margin: auto;
 }
 
 .post-caption {
@@ -121,7 +120,7 @@ html {
 }
 
 .blog-post section h2 {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
@@ -129,7 +128,7 @@ html {
 }
 
 .blog-post section p {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }
@@ -156,16 +155,10 @@ html {
 }
 
 .toc {
-  position: fixed;
-  top: 8rem;
+  /* position: fixed;
+  top: 8rem; */
   align-self: flex-start;
-  width: 300px;
-  min-width: 250px;
-  background: var(--primary);
-  padding: 1.5rem;
-  border-radius: 12px;
-  height: fit-content;
-  flex-shrink: 0;
+  width: 100%;
 }
 
 .toc h3 {
@@ -185,7 +178,7 @@ html {
 }
 
 .toc a {
-  color: #0073e6;
+  color: #7aa5cf;
   text-decoration: none;
   font-size: 0.98rem;
   transition: color 0.2s ease;
@@ -215,10 +208,6 @@ html {
     font-size: 1rem;
   }
 
-  .toc {
-    width: 250px;
-  }
-
   .post-box {
     width: calc(50% - 20px);
   }
@@ -227,19 +216,13 @@ html {
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
-    padding: 1rem;
+    padding: 0;
   }
-
-  .toc {
-    display: none;
-  }
-
   .blog-post {
-    padding: 1.5rem;
     border-radius: 8px;
     box-shadow: none;
     max-width: 100%;
-    width: 90%;
+    width: 100%;
     align-self: center;
   }
 
@@ -274,10 +257,6 @@ html {
   .post {
     padding-top: 70px;
   }
-  .blog-post {
-    padding: 1rem;
-  }
-
   .blog-post .title h1 {
     font-size: 1.8rem;
   }
