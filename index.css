@@ -26,7 +26,7 @@ a {
 }
 ::-webkit-scrollbar {
   width: 10px;
-  background: var(--secondary-color);
+  background: var(--font-color);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
@@ -67,8 +67,8 @@ html {
   top: 1540px;
   height: 1240px;
   border-radius: 0;
-  border-radius: 150px 150px 0px 0px / 75px 75px 0px 0px;
-  background-color: #2d2d2d;
+  border-radius: 150px 150px 150px 150px / 75px 75px 75px 75px;
+  background-color: var(--font-color);
   z-index: -1;
 }
 .nav-bar {
@@ -159,14 +159,14 @@ html {
   object-fit: cover;
 }
 .intro-text {
-  width: 80%;
+  width: 75%;
   text-align: center;
   font-size: 18px;
   color: var(--light-black);
 }
 
 .name {
-  font-size: 3rem;
+  font-size: 2.6rem;
 }
 
 .btns-container {
@@ -223,6 +223,7 @@ html {
 #about > h2,
 #services > h2,
 #contacts > h2,
+.blog > h2,
 .qualifications > h2 {
   font-size: 2rem;
   text-align: center;
@@ -328,6 +329,73 @@ html {
   font-weight: 500;
 }
 
+.blog {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 550px;
+}
+
+.post-box {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  max-height: 230px;
+}
+
+.post-box:hover {
+  transform: translateY(-5px);
+}
+
+.post-image-preview {
+  height: 54%;
+}
+
+.post-image-preview > img {
+  width: 100%;
+  height: fit-content;
+  display: block;
+  object-fit: cover;
+}
+.post-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px;
+  background-color: var(--primary);
+  align-self: center;
+  color: #fff;
+  height: 46%;
+}
+.post-title > h3 > a {
+  color: #fff;
+}
+
+.post-title > h3>  a:hover {
+  text-decoration: underline;
+}
+
 #contact {
   width: 100%;
   height: 400px;
@@ -352,37 +420,49 @@ html {
 
 .contact-btn {
   font-size: 16px;
-  background-color: var(--primary);
-  color: #fff;
-  width: 250px;
-  padding: 20px;
+  background-color: var(--secondary-color);
+  color: var(--primary);
+  width: 200px;
+  padding: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  font-size: 18px;
+  gap: 15px;
   border-radius: 30px;
   transition: all 0.25s ease;
 }
 .contact-btn > i {
-  color: var(--light-black);
+  color: var(--primary);
+  font-size: 22px;
 }
-
-footer {
-  background-color: var(--primary);
+.contain {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
   height: 60px;
   flex-wrap: wrap;
+  max-width: 1170px;
+}
+footer {
+  background-color: var(--font-color);
+  margin: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1000;
+  border-radius: 100px 100px 0px 0px / 50px 50px 0px 0px;
 }
 
 footer #logo {
   font-size: 1rem;
   font-weight: bold;
   font-style: normal;
+  cursor: pointer;
+}
+footer #logo > a {
+  color: #fff;
 }
 
 .footer-icons {
@@ -449,13 +529,23 @@ footer #logo {
   }
   .third {
     top: 1900px;
-    height: 1500px;
+    height: 1650px;
   }
 }
 
 @media (max-width: 860px) {
   .container { 
     padding: 0;
+  }
+  .posts {
+     flex-direction: column;
+     align-items: center;
+  }
+  .post-box {
+    height: 300px;
+  }
+  .post-title {
+    font-size: 14px;
   }
   #home,
   #about {
@@ -565,6 +655,10 @@ footer #logo {
   .service-box i {
     font-size: 2.2rem;
   }
+  .blog {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 @media (max-width: 479px) {
@@ -576,6 +670,10 @@ footer #logo {
   }
   .intro-text {
     font-size: 1rem;
-    
   }
+.contact-btn > i {
+  font-size: 22px;
+}
+  .post-box {
+    width: 300px;}
 }
