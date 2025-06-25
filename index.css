@@ -640,6 +640,7 @@ footer #logo > a {
     padding: 10px 25px 10px 25px;
     position: relative;
     bottom: 0;
+    border-radius: 0;
   }
   .footer-left > #logo {
     font-size: 12px;
@@ -659,8 +660,6 @@ footer #logo > a {
     padding-top: 40px;
     padding-bottom: 40px;
   }
-  .contain {
-    border-radius: 0;
 }
 
 @media (max-width: 479px) {
