@@ -157,6 +157,7 @@ html {
   object-fit: cover;
 }
 .intro-text {
+  font-family: 'Poppins', sans-serif;
   width: 75%;
   text-align: center;
   font-size: 18px;
@@ -367,6 +368,7 @@ html {
 
 .post-image-preview {
   height: 54%;
+  width: 100%;
 }
 
 .post-image-preview > img {
