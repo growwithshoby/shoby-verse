@@ -29,6 +29,7 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" as="image" href="/assets/images/hero.webp">
 
   <meta property="og:site_name" content="ShobyVerse" />
   <meta property="og:url" content="https://shoby-verse.web.app/">
@@ -45,6 +46,7 @@
   <meta name="twitter:title" content="Shoaib Akhtar | Digital Marketer in Kolkata">
   <meta name="twitter:description" content="I'm Shoaib Akhtar, a Kolkata-based Digital Marketer, SEO expert, and Graphic Designer. I offer services in SEO, web design, social media marketing, and more.">
   <meta name="twitter:image" content="/assets/images/og_banner.webp">
+  
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -125,7 +127,7 @@
     <main class="container">
       <section id="home">
         <div class="profile-container">
-          <img rel="preload" as="image" src="/assets/images/hero.webp" alt="A picture of Shoaib Akhtar" />
+          <img src="/assets/images/hero.webp" alt="A picture of Shoaib Akhtar" loading="lazy" />
         </div>
         <div class="intro-text">
           <p>Hi, i'm</p>
@@ -147,21 +149,22 @@
           >
         </div>
         <div class="icons social">
-          <a target="__blank" href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing"
+          <a target="__blank"  aria-label="LinkedIn" href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing"
             ><i class="fa-brands fa-linkedin"></i
           ></a>
-          <a target="__blank" href="https://twitter.com/ishoa1b"
+          <a target="__blank"  aria-label="Twitter" href="https://twitter.com/ishoa1b"
             ><i class="fa-brands fa-twitter"></i
           ></a>
           <a
             target="__blank"
+             aria-label="Facebook"
             href="https://www.facebook.com/people/Growwithshoby/61575839828906/"
             ><i class="fa-brands fa-facebook"></i
           ></a>
-          <a target="__blank" href="https://instagram.com/growwithshoby"
+          <a target="__blank"  aria-label="Instagram" href="https://instagram.com/growwithshoby"
             ><i class="fa-brands fa-instagram"></i
           ></a>
-          <a target="__blank" href="https://github.com/growwithshoby"
+          <a target="__blank"  aria-label="Github" href="https://github.com/growwithshoby"
             ><i class="fa-brands fa-github"></i
           ></a>
         </div>
@@ -226,42 +229,49 @@
         <div class="about-content">
           <section>
             <div class="services-scroll-container">
-              <div class="service-box">
-                <i class="fas fa-search"></i>
-                <h3>SEO Optimization</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-bullhorn"></i>
-                <h3>Social Media Marketing</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Graphic Design</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Web Solution</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-envelope-open-text"></i>
-                <h3>Email Marketing</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-ad"></i>
-                <h3>Paid Ads</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-chart-line"></i>
-                <h3>Analytics</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-            </div>
+  <div class="service-box">
+    <i class="fas fa-search"></i>
+    <h3>SEO Optimization</h3>
+    <p>Boost your website’s visibility on Google with advanced on-page, off-page, and technical SEO strategies.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-bullhorn"></i>
+    <h3>Social Media Marketing</h3>
+    <p>Grow your brand with targeted content, ad campaigns, and engagement strategies on platforms like Instagram, Facebook, and LinkedIn.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-paint-brush"></i>
+    <h3>Graphic Design</h3>
+    <p>Create stunning visuals and brand assets including logos, banners, flyers, and social media creatives that captivate your audience.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-laptop-code"></i>
+    <h3>Web Solutions</h3>
+    <p>Get responsive, fast-loading websites built with clean code and modern design tailored to your business needs.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-envelope-open-text"></i>
+    <h3>Email Marketing</h3>
+    <p>Reach your audience effectively with professional email campaigns, automation flows, and newsletter strategies.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-ad"></i>
+    <h3>Paid Ads</h3>
+    <p>Run high-converting Google Ads and Meta Ads to drive targeted traffic, generate leads, and maximize ROI.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-chart-line"></i>
+    <h3>Analytics & Reporting</h3>
+    <p>Track your digital performance with detailed Google Analytics, Ads, and SEO reports to make data-driven decisions.</p>
+  </div>
+</div>
+
           </section>
         </div>
       </section>
@@ -270,7 +280,7 @@
         <div class="posts">
             <div class="post-box">
               <div class="post-image-preview">
-                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9imoqoxiyal81mq8uljh.jpeg" alt="Intro panel of the brand growwithshoby with a tagline let us grow your business">
+                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9imoqoxiyal81mq8uljh.jpeg" alt="Intro panel of the brand growwithshoby with a tagline let us grow your business" loading="lazy">
               </div>
               <div class="post-title">
                 <h3><a href="https://medium.com/@growwithshoby/meet-shoaib-akhtar-the-mind-behind-growwithshoby-a-rising-name-in-digital-marketing-8b9cd48666eb" target="__blank">Meet Shoaib Akhtar: The mind behind Growwithshoby</a></h3>
@@ -278,14 +288,14 @@
             </div>
             <div class="post-box">
               <div class="post-image-preview">
-                <img src="assets/images/hero.webp" alt="Image of the author Shoaib Akhtar">
+                <img src="assets/images/hero.webp" alt="Image of the author Shoaib Akhtar" loading="lazy">
               </div>
               <div class="post-title">
                 <h3><a href="https://dev.to/shoa1bdev/shoaib-akhtar-my-journey-starting-growwithshoby-52dc" target="__blank">Shoaib Akhtar: Digital Marketing Journey</a></h3></div>
             </div>
             <div class="post-box">
               <div class="post-image-preview">
-                <img rel src="https://indiater.com/wp-content/uploads/2019/02/seo-for-business.jpg" alt="Banner showing a man holding a search bar where SEO is written">
+                <img rel src="https://indiater.com/wp-content/uploads/2019/02/seo-for-business.jpg" alt="Banner showing a man holding a search bar where SEO is written" loading="lazy">
               </div>
               <div class="post-title"><h3><a href="/blog/top-five-seo-practice">Top 5 Best Practices for Seo for your websites</a></h3></div>
             </div>
@@ -314,15 +324,19 @@
       </div>
       <div class="footer-icons">
         <a href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing/" target="_blank"
+         aria-label="LinkedIn"
           ><i class="fa-brands fa-linkedin"></i
         ></a>
-        <a href="https://twitter.com/" target="_blank"
+        <a href="https://twitter.com/ishoa1b" target="_blank"
+         aria-label="Twitter"
           ><i class="fa-brands fa-twitter"></i
         ></a>
         <a href="https://www.facebook.com/people/Growwithshoby/61575839828906/" target="_blank"
+         aria-label="Facebook"
           ><i class="fa-brands fa-facebook"></i
         ></a>
         <a href="https://instagram.com/growwithshoby" target="_blank"
+         aria-label="Instagram"
           ><i class="fa-brands fa-instagram"></i
         ></a>
       </div>
