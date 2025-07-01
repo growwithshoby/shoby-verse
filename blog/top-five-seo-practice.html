@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G01D6865YD"></script>
-<script>
+  <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  function gtag(){ dataLayer.push(arguments); }
 
-  gtag('config', 'G-G01D6865YD');
+  // Lazy-load GA after page load (non-blocking)
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var gtagScript = document.createElement('script');
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-G01D6865YD';
+      gtagScript.async = true;
+      document.head.appendChild(gtagScript);
+
+      gtag('js', new Date());
+      gtag('config', 'G-G01D6865YD'); // You can also add { 'send_page_view': false } here if needed
+    }, 1500); // Load after 1.5s or adjust as needed
+  });
 </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
