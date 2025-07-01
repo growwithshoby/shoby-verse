@@ -1,6 +1,8 @@
 body,
 html {
   background-color: #2d2d2d;
+  font-family: "Poppins", sans-serif;
+  font-display:swap;
 }
 .container {
   display: flex;
