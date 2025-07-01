@@ -11,6 +11,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  font-display:swap;
 }
 i {
   color: var(--light-black);
@@ -38,6 +39,8 @@ html {
   color: var(--light-black);
   scroll-behavior: smooth;
   background-color: var(--primary);
+  font-family: "Poppins", sans-serif;
+  font-display:swap;
 }
 
 .container {
