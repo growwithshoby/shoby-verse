@@ -1,38 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G01D6865YD"></script>
-<script>
+  <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  function gtag(){ dataLayer.push(arguments); }
 
-  gtag('config', 'G-G01D6865YD');
+  // Lazy-load GA after page load (non-blocking)
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var gtagScript = document.createElement('script');
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-G01D6865YD';
+      gtagScript.async = true;
+      document.head.appendChild(gtagScript);
+
+      gtag('js', new Date());
+      gtag('config', 'G-G01D6865YD'); // You can also add { 'send_page_view': false } here if needed
+    }, 1500); // Load after 1.5s or adjust as needed
+  });
 </script>
   <!-- Basic Setup -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shoaib Akhtar | Digital Marketing - SEO & Web Solutions Specialist</title>
-  <meta name="description" content="Shoaib Akhtar is a digital marketing specialist, SEO expert, and the founder of GrowWithShoby. View his portfolio, blog, and services." />
-  <meta name="keywords" content="Shoaib Akhtar Digital Marketing, digital marketing shoaib akhtar, SEO Portfolio, GrowWithShoby, Web Design, SEO Kolkata, Growwithshoby" />
+  <meta name="robots" content="index, follow" />
+  <title>Shoaib Akhtar | Digital Marketing Portfolio - SEO & Web Solutions </title>
+  <meta name="description" content="I'm Shoaib Akhtar, a Kolkata-based Digital Marketer, SEO expert, and Graphic Designer. I offer services in SEO, web design, social media marketing, and more." />
   <link rel="canonical" href="https://shoby-verse.web.app/" />
 
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ka-f.fontawesome.com" crossorigin>
 
-  <!-- Canonical URL (Firebase domain) -->
-  <link rel="canonical" href="https://shoby-verse.web.app/" />
+  <!-- Preload the Google Fonts stylesheet -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+
+  <!-- Load it asynchronously to avoid render-blocking -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" media="print" onload="this.media='all'">
+
+  <!-- Fallback for no-JS users -->
+  <noscript>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </noscript>
+
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" as="image" href="https://shoby-verse.web.app/assets/images/hero.webp">
 
-  <!-- Open Graph Meta (for Facebook, LinkedIn etc.) -->
-  <!-- Facebook Meta Tags -->
+  <meta property="og:site_name" content="ShobyVerse" />
   <meta property="og:url" content="https://shoby-verse.web.app/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Shoaib Akhtar | Digital Marketer in Kolkata">
   <meta property="og:description" content="I'm Shoaib Akhtar, a Kolkata-based Digital Marketer, SEO expert, and Graphic Designer. I offer services in SEO, web design, social media marketing, and more.">
-  <meta property="og:image" content="https://lh3.googleusercontent.com/d/1MZO7V9EANLyjSum17_NYN8WRZjmLt8s7">
-
+  <meta property="og:image" content="https://shoby-verse.web.app/assets/images/og_banner.webp">
   <!-- Twitter Meta -->
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -40,8 +62,8 @@
   <meta property="twitter:url" content="https://shoby-verse.web.app/">
   <meta name="twitter:title" content="Shoaib Akhtar | Digital Marketer in Kolkata">
   <meta name="twitter:description" content="I'm Shoaib Akhtar, a Kolkata-based Digital Marketer, SEO expert, and Graphic Designer. I offer services in SEO, web design, social media marketing, and more.">
-  <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/1MZO7V9EANLyjSum17_NYN8WRZjmLt8s7">
-  <meta name="robots" content="index, follow" />
+  <meta name="twitter:image" content="https://shoby-verse.web.app/assets/images/og_banner.webp">
+  
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,7 +71,7 @@
   "name": "Shoaib Akhtar",
   "alternateName": "GrowWithShoby",
   "url": "https://shoby-verse.web.app",
-  "image": "https://lh3.googleusercontent.com/d/1QfB9IrePohz2Q-a-8U4Lu13H-uLsN5oc",
+  "image": "https://shoby-verse.web.app/assets/images/logo.webp",
   "jobTitle": "Digital Marketing Specialist",
   "sameAs": [
     "https://www.linkedin.com/in/shoaibakhtar-digitalmarketing/",
@@ -60,13 +82,712 @@
   "description": "Shoaib Akhtar is the founder of GrowWithShoby and a digital marketing strategist focused on SEO, content, and branding."
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Shoaib Akhtar",
+  "url": "https://shoby-verse.web.app",
+  "publisher": {
+    "@type": "Organization",
+    "name": "GrowWithShoby",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/assets/images/logo.webp"
+    }
+  }
+}
 
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/index.css" />
-
+</script>
   <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/615d6f4881.js" crossorigin="anonymous" defer></script>
+  <script src="https://kit.fontawesome.com/615d6f4881.js" crossorigin="anonymous" async></script>
+  <!-- CSS -->
+  <style>
+    :root {
+  --primary-color: #f7f7f7;
+  --secondary-color: #fff;
+  --font-color: #2d2d2d;
+  --light-black: #d4d4d4;
+  --primary: #1f1f1f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-display:swap;
+}
+i {
+  color: var(--light-black);
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.navlink:hover {
+  text-decoration: underline;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--font-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 8px;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  color: var(--light-black);
+  scroll-behavior: smooth;
+  background-color: var(--primary);
+  font-family: "Poppins", sans-serif;
+  font-display:swap;
+}
+
+.container {
+  padding: 0 10px;
+  margin: auto;
+  position: relative;
+  width: 100%;
+  max-width: 1170px;
+}
+
+.bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 700px;
+  background: var(--primary);
+  border-radius: 0px 0px 150px 150px / 0px 0px 75px 75px;
+}
+.second {
+  background-color: #2d2d2d;
+  top:450px
+}
+.third {
+  top: 1540px;
+  height: 1240px;
+  border-radius: 0;
+  border-radius: 150px 150px 150px 150px / 75px 75px 75px 75px;
+  background-color: var(--font-color);
+  z-index: -1;
+}
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  z-index: 1000;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: var(--primary);
+  color: white;
+}
+.nav {
+  max-width: 1170px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+#logo > h2 > a {
+  font-style: italic;
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+}
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+#logo .logoImg {
+  width: 35px;
+  cursor: pointer;
+}
+.navlinks {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.navlink > a {
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.navlink > a:hover {
+  text-decoration: underline;
+}
+
+#home {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 150px 0 100px 0;
+  gap: 25px;
+}
+.profile-container {
+  width: 150px;
+  height: 150px;
+  background: var(--secondary-color);
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 50%;
+}
+
+.profile-container > img {
+  width: 99%;
+  height: 99%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.intro-text {
+  font-family: 'Poppins', sans-serif;
+  font-display: swap;
+  width: 75%;
+  text-align: center;
+  font-size: 18px;
+  color: var(--light-black);
+}
+
+.name {
+  font-size: 2.6rem;
+}
+
+.btns-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 16px 26px;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+  color:var(--primary);
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.25s ease;
+}
+.btn:hover,
+.social > a > i:hover,
+.contact-btn:hover
+ {
+  transform: translateY(-5px);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid var(--light-black);
+  color: var(--primary-color);
+}
+
+.content > .btn:hover {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.social {
+  font-size: 1.8rem;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.social > a > i {
+  color: var(--primary-color);
+  transition: all 0.25s ease;
+}
+
+#about {
+  width: 100%;
+  scroll-margin-top: 170px;
+}
+
+#about > h2,
+#services > h2,
+#contacts > h2,
+.blog > h2,
+.qualifications > h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--light-black);
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 2px solid var(--light-black);
+}
+
+.about-me {
+  padding-top: 20px;
+  flex: 1 1 60%;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--light-black);
+}
+
+.qualifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding-top: 140px;
+  
+}
+
+.certifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.certificates {
+  width: 250px;
+  height: 170px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 5px;
+  margin-bottom: 100px;
+}
+
+.certificates > p {
+  font-size: 16px;
+}
+
+.certificates > i {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#services {
+  width: 100%;
+  padding: 30px 0;
+  scroll-margin-top: 60px;
+}
+.about-content > section {
+  padding-top: 50px ;
+}
+.services-scroll-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.service-box {
+  flex: 0 0 auto;
+  width: 240px;
+  height: 200px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  scroll-snap-align: start;
+  gap: 10px;
+}
+
+.service-box i {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.service-box p {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.blog {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 550px;
+}
+
+.post-box {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  max-height: 230px;
+}
+
+.post-box:hover {
+  transform: translateY(-5px);
+}
+
+.post-image-preview {
+  height: 54%;
+  width: 100%;
+}
+
+.post-image-preview > img {
+  width: 100%;
+  height: fit-content;
+  display: block;
+  object-fit: cover;
+}
+.post-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px;
+  background-color: var(--primary);
+  align-self: center;
+  color: #fff;
+  height: 46%;
+}
+.post-title > h3 > a {
+  color: #fff;
+}
+
+.post-title > h3>  a:hover {
+  text-decoration: underline;
+}
+
+#contact {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  font-size: 1.2rem;
+  margin: 100px 0 50px 0;
+}
+
+.contacts {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.contact-text {
+  text-align: center;
+}
+
+.contact-btn {
+  font-size: 16px;
+  background-color: var(--secondary-color);
+  color: var(--primary);
+  width: 200px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border-radius: 30px;
+  transition: all 0.25s ease;
+}
+.contact-btn > i {
+  color: var(--primary);
+  font-size: 22px;
+}
+.contain {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  flex-wrap: wrap;
+  max-width: 1170px;
+}
+footer {
+  background-color: var(--font-color);
+  margin: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  border-radius: 100px 100px 0px 0px / 50px 50px 0px 0px;
+}
+
+footer #logo {
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: normal;
+  cursor: pointer;
+}
+footer #logo > a {
+  color: #fff;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-icons a {
+  color: #aaa;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+  color: white;
+}
+@media (max-width: 1260px) {
+  .about-me {
+    width: 80%;
+    text-align: justify;
+    font-size: 16px;
+  }
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .third {
+    top: 1560px;
+    height: 1260px;
+  }
+  .service-box {
+    align-items: center;
+  }
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1160px) {
+  .intro-text {
+    font-size: 16px;
+    width: 90%;
+  }
+  .name {
+    font-size: 2.5rem;
+  }
+  .about-me { 
+    width: 90%;
+  }
+  .certificates {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .btns-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .first {
+    height: 750px;
+  }
+  .second {
+    top: 550px;
+  }
+  .third {
+    top: 1900px;
+    height: 1650px;
+  }
+}
+
+@media (max-width: 860px) {
+  .container { 
+    padding: 0;
+  }
+  .posts {
+     flex-direction: column;
+     align-items: center;
+  }
+  .post-box {
+    height: 300px;
+  }
+  .post-title {
+    font-size: 14px;
+  }
+  #home,
+  #about {
+    padding: 100px 10px 0 10px;
+    margin-bottom: 0;
+  }
+  .qualifications {
+    padding-top:100px ;
+  }
+  #about > h2 {
+    font-size: 2rem;
+  }
+  .about-me {
+    width: 90%;
+    font-size: 14px;
+  }
+  .intro-text {
+    width: 100%;
+    font-size: 16px;
+  }
+  .name {
+    font-size: 2.2rem;
+  }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .social {
+    font-size: 24px;
+  }
+  .navlinks {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 25px 0;
+    background-color: var(--primary);
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
+      rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+  }
+  .first {
+    height: 680px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  }
+  .third,
+  .second {
+    display: none;
+  }
+  #services, #contact{
+    background-color: #2d2d2d;
+    padding: 0 10px 0 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  #services {
+    border-radius: 150px 150px 0px 0px / 75px 75px 0px 0px;
+  }
+  .contact-text {
+    padding-top: 25px;
+  }
+  #services > h2 {
+    padding-top: 25px ;
+  }
+  .navlinks.active {
+    display: flex;
+    opacity: 1;
+  }
+  .contacts {
+    flex-direction: column;
+    gap: 50px;
+    font-size: 1.3rem;
+  }
+  footer {
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 10px 25px 10px 25px;
+    position: relative;
+    bottom: 0;
+    border-radius: 0;
+  }
+  .footer-left > #logo {
+    font-size: 12px;
+  }
+  .footer-icons {
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .service-box {
+    align-items: center;
+  }
+  .service-box i {
+    font-size: 2.2rem;
+  }
+  .blog {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 479px) {
+  .first {
+    height: 720px;
+  }
+  #home {
+    padding-top: 90px;
+  }
+  .intro-text {
+    font-size: 1rem;
+  }
+.contact-btn > i {
+  font-size: 22px;
+}
+  .post-box {
+    width: 300px;}
+}
+  </style>
 
   <!-- Main JavaScript -->
   <script src="/main.js" defer></script>
@@ -80,7 +801,7 @@
     <nav class="nav-bar">
       <div class="nav">
         <div id="logo">
-          <img class="logoImg" src="https://lh3.googleusercontent.com/d/1QfB9IrePohz2Q-a-8U4Lu13H-uLsN5oc" alt="Site's logo refering to the start up growwithshoby"/>
+          <img class="logoImg" src="/assets/images/logo.webp" alt="Site's logo refering to the start up growwithshoby"/>
           <h2>
             <a href="/">
           Shoby.<span style="font-size: 14px;">Portfolio</span>
@@ -99,7 +820,7 @@
          <li class="navlink about"><a href="#about">About</a></li>
          <li class="navlink projects"><a href="#services">Services</a></li>
          <li class="navlink projects"><a href="https://growwith-shoby.web.app/">Works</a></li>
-         <li class="navlink projects"><a href="/blog">Blog</a></li>
+         <li class="navlink projects"><a href="#blog">Blog</a></li>
          <li class="navlink contact"><a href="#contact">Contact</a></li>
        </ul>
 
@@ -108,15 +829,13 @@
     <main class="container">
       <section id="home">
         <div class="profile-container">
-          <img src="https://lh3.googleusercontent.com/d/1T6ggp_4leHug_h5dH7pbLffmf6LltDTy" alt="picture of author" />
+          <img src="/assets/images/hero.webp" alt="A picture of Shoaib Akhtar" loading="lazy" />
         </div>
         <div class="intro-text">
           <p>Hi, i'm</p>
           <h1 class="name">Shoaib Akhtar</h1>
           <p>
-            I help businesses grow online by combining result-driven SEO,
-            creative graphic design, and high-converting social media ad
-            strategies — all tailored to your unique goals.
+            A Kolkata-based Digital Marketer, SEO expert, and Graphic Designer. I offer services in SEO, Graphic and Web design, Social media marketing and this is my personal portfolio!
           </p>
         </div>
         <div class="btns-container">
@@ -132,19 +851,23 @@
           >
         </div>
         <div class="icons social">
-          <a target="__blank" href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing"
+          <a target="__blank"  aria-label="LinkedIn" href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing"
             ><i class="fa-brands fa-linkedin"></i
           ></a>
-          <a target="__blank" href="https://twitter.com/ishoa1b"
+          <a target="__blank"  aria-label="Twitter" href="https://twitter.com/ishoa1b"
             ><i class="fa-brands fa-twitter"></i
           ></a>
           <a
             target="__blank"
+             aria-label="Facebook"
             href="https://www.facebook.com/people/Growwithshoby/61575839828906/"
             ><i class="fa-brands fa-facebook"></i
           ></a>
-          <a target="__blank" href="https://instagram.com/growwithshoby"
+          <a target="__blank"  aria-label="Instagram" href="https://instagram.com/growwithshoby"
             ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a target="__blank"  aria-label="Github" href="https://github.com/growwithshoby"
+            ><i class="fa-brands fa-github"></i
           ></a>
         </div>
       </section>
@@ -180,25 +903,25 @@
           <div class="certifications">
             <div class="certificates">
               <i class="fa-brands fa-google"></i>
-              <h4>Google Digital Marketing & E-Commerce Certification</h4>
+              <h3>Google Digital Marketing & E-Commerce Certification</h3>
               <p>2025</p>
             </div>
             <div class="certificates">
               <i class="fas fa-user-graduate"></i>
-              <h4>Masters's in Business Administration - Marketing</h4>
+              <h3>Masters's in Business Administration - Marketing</h3>
               <p>2023-25</p>
             </div>
             <div class="certificates">
               <i class="fa-solid fa-desktop"></i>
-              <h4>
+              <h3>
                 Responsive Web Design -<br />
                 FreeCodeCamp
-              </h4>
+              </h3>
               <p>2020</p>
             </div>
             <div class="certificates">
               <i class="fa fa-graduation-cap"></i>
-              <h4>Bachlor's in Commerce - <br />Business & Accounting</h4>
+              <h3>Bachlor's in Commerce - <br />Business & Accounting</h3>
               <p>2019-2022</p>
             </div>
           </div>
@@ -208,44 +931,77 @@
         <div class="about-content">
           <section>
             <div class="services-scroll-container">
-              <div class="service-box">
-                <i class="fas fa-search"></i>
-                <h3>SEO Optimization</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-bullhorn"></i>
-                <h3>Social Media Marketing</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Graphic Design</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Web Solution</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-envelope-open-text"></i>
-                <h3>Email Marketing</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-ad"></i>
-                <h3>Paid Ads</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-              <div class="service-box">
-                <i class="fas fa-chart-line"></i>
-                <h3>Analytics</h3>
-                <p>I can help you rank your website well in google search</p>
-              </div>
-            </div>
+  <div class="service-box">
+    <i class="fas fa-search"></i>
+    <h3>SEO Optimization</h3>
+    <p>Boost your website’s visibility on Google with advanced on-page, off-page, and technical SEO strategies.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-bullhorn"></i>
+    <h3>Social Media Marketing</h3>
+    <p>Grow your brand with targeted content, ad campaigns, and engagement strategies on platforms like Instagram, Facebook, and LinkedIn.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-paint-brush"></i>
+    <h3>Graphic Design</h3>
+    <p>Create stunning visuals and brand assets including logos, banners, flyers, and social media creatives that captivate your audience.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-laptop-code"></i>
+    <h3>Web Solutions</h3>
+    <p>Get responsive, fast-loading websites built with clean code and modern design tailored to your business needs.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-envelope-open-text"></i>
+    <h3>Email Marketing</h3>
+    <p>Reach your audience effectively with professional email campaigns, automation flows, and newsletter strategies.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-ad"></i>
+    <h3>Paid Ads</h3>
+    <p>Run high-converting Google Ads and Meta Ads to drive targeted traffic, generate leads, and maximize ROI.</p>
+  </div>
+
+  <div class="service-box">
+    <i class="fas fa-chart-line"></i>
+    <h3>Analytics & Reporting</h3>
+    <p>Track your digital performance with detailed Google Analytics, Ads, and SEO reports to make data-driven decisions.</p>
+  </div>
+</div>
+
           </section>
         </div>
+      </section>
+      <section id="blog" class="blog">
+        <h2>Blog Posts</h2>
+        <div class="posts">
+            <div class="post-box">
+              <div class="post-image-preview">
+                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9imoqoxiyal81mq8uljh.jpeg" alt="Intro panel of the brand growwithshoby with a tagline let us grow your business" loading="lazy">
+              </div>
+              <div class="post-title">
+                <h3><a href="https://medium.com/@growwithshoby/meet-shoaib-akhtar-the-mind-behind-growwithshoby-a-rising-name-in-digital-marketing-8b9cd48666eb" target="__blank">Meet Shoaib Akhtar: The mind behind Growwithshoby</a></h3>
+              </div>
+            </div>
+            <div class="post-box">
+              <div class="post-image-preview">
+                <img src="assets/images/hero.webp" alt="Image of the author Shoaib Akhtar" loading="lazy">
+              </div>
+              <div class="post-title">
+                <h3><a href="https://dev.to/shoa1bdev/shoaib-akhtar-my-journey-starting-growwithshoby-52dc" target="__blank">Shoaib Akhtar: Digital Marketing Journey</a></h3></div>
+            </div>
+            <div class="post-box">
+              <div class="post-image-preview">
+                <img rel src="https://indiater.com/wp-content/uploads/2019/02/seo-for-business.jpg" alt="Banner showing a man holding a search bar where SEO is written" loading="lazy">
+              </div>
+              <div class="post-title"><h3><a href="/blog/top-five-seo-practice">Top 5 Best Practices for Seo for your websites</a></h3></div>
+            </div>
+          </div>
       </section>
       <section id="contact">
         <div class="contact-text">
@@ -264,22 +1020,28 @@
       </section>
     </main>
     <footer>
+      <div class="contain">
       <div class="footer-left">
-        <span id="logo">© | GrowWithShoby</span>
+        <span id="logo"><a href="https://growwith-shoby.web.app/">© | GrowWithShoby</a></span>
       </div>
       <div class="footer-icons">
         <a href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing/" target="_blank"
+         aria-label="LinkedIn"
           ><i class="fa-brands fa-linkedin"></i
         ></a>
-        <a href="https://twitter.com/" target="_blank"
+        <a href="https://twitter.com/ishoa1b" target="_blank"
+         aria-label="Twitter"
           ><i class="fa-brands fa-twitter"></i
         ></a>
         <a href="https://www.facebook.com/people/Growwithshoby/61575839828906/" target="_blank"
+         aria-label="Facebook"
           ><i class="fa-brands fa-facebook"></i
         ></a>
         <a href="https://instagram.com/growwithshoby" target="_blank"
+         aria-label="Instagram"
           ><i class="fa-brands fa-instagram"></i
         ></a>
+      </div>
       </div>
     </footer>
   </body>

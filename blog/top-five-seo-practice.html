@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G01D6865YD"></script>
-<script>
+  <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  function gtag(){ dataLayer.push(arguments); }
 
-  gtag('config', 'G-G01D6865YD');
+  // Lazy-load GA after page load (non-blocking)
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var gtagScript = document.createElement('script');
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-G01D6865YD';
+      gtagScript.async = true;
+      document.head.appendChild(gtagScript);
+
+      gtag('js', new Date());
+      gtag('config', 'G-G01D6865YD'); // You can also add { 'send_page_view': false } here if needed
+    }, 1500); // Load after 1.5s or adjust as needed
+  });
 </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta name="robots" content="index, follow" />
     <title>Top 5 SEO Best Practices for Your Website | Shoaib Akhtar</title>
+   <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ka-f.fontawesome.com" crossorigin>
+  <link rel="preload" as="image" href="/assets/images/logo.webp" type="image/webp">
+    <link rel="preload" as="image" href="/assets/images/seo.webp" type="image/webp" />
+
+  <!-- Preload the Google Fonts stylesheet -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+
+  <!-- Load it asynchronously to avoid render-blocking -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" media="print" onload="this.media='all'">
+
+  <!-- Fallback for no-JS users -->
+  <noscript>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </noscript>
     <meta
       name="description"
       content="Five essential SEO best practices to boost your site's visibility: clear title tags, mobile optimization, fast load time, high-quality content, and strong internal linking."
     />
-    <meta
-      name="keywords"
-      content="SEO Best Practices, Shoaib Akhtar, GrowWithShoby, SEO tips, website optimization, digital marketing Kolkata"
-    />
     <meta name="author" content="Shoaib Akhtar" />
 
     <!-- Canonical & Theme -->
-    <link rel="canonical" href="https://growwith-shoby.web.app/blog/post1" />
-    <meta name="theme-color" content="#000000" />
+    <link rel="canonical" href="https://shoby-verse.web.app/blog/top-five-seo-practice" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- Open Graph for Facebook/LinkedIn -->
     <meta
@@ -39,11 +61,11 @@
     />
     <meta
       property="og:image"
-      content="https://lh3.googleusercontent.com/d/1QfB9IrePohz2Q-a-8U4Lu13H-uLsN5oc"
+      content="/assets/images/og_banner.webp"
     />
     <meta
       property="og:url"
-      content="https://growwith-shoby.web.app/blog/post1"
+      content="https://shoby-verse.web.app/blog/top-five-seo-practice"
     />
     <meta property="og:type" content="article" />
     <meta
@@ -67,21 +89,530 @@
     />
     <meta
       name="twitter:image"
-      content="https://lh3.googleusercontent.com/d/1QfB9IrePohz2Q-a-8U4Lu13H-uLsN5oc"
+      content="https://shoby-verse.web.app/assets/images/og_banner.webp"
     />
-
     <!-- Favicon -->
     <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/index.css" />
-    <link rel="stylesheet" href="/blog.css" />
+   <style>
+:root {
+  --primary-color: #f7f7f7;
+  --secondary-color: #fff;
+  --font-color: #2d2d2d;
+  --light-black: #bbbbbb; /* improved contrast */
+  --primary: #1f1f1f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-display: swap;
+}
+
+i {
+  color: var(--light-black);
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.navlink:hover {
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--font-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 8px;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  color: var(--light-black);
+  scroll-behavior: smooth;
+  background-color: var(--font-color);
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+  z-index: 1000;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: white;
+}
+
+.nav {
+  max-width: 1170px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+#logo > h2 > a {
+  font-style: italic;
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#logo .logoImg {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.navlink > a {
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.navlink > a:hover {
+  text-decoration: underline;
+}
+
+.btns-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 16px 26px;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--primary);
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.25s ease;
+}
+
+.btn:hover,
+.social > a > i:hover,
+.contact-btn:hover {
+  transform: translateY(-5px);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid var(--light-black);
+  color: var(--primary-color);
+}
+
+.blog {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 550px;
+}
+
+.post-box {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  max-height: 230px;
+}
+
+.post-box:hover {
+  transform: translateY(-5px);
+}
+
+.post-image-preview {
+  height: 54%;
+  width: 100%;
+}
+
+.post-image-preview > img {
+  width: 100%;
+  height: fit-content;
+  display: block;
+  object-fit: cover;
+}
+
+.post-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px;
+  background-color: var(--primary);
+  align-self: center;
+  color: #f0f0f0; /* improved */
+  height: 46%;
+}
+
+.post-title > h3 > a {
+  color: #f0f0f0;
+}
+
+.post-title > h3 > a:hover {
+  text-decoration: underline;
+}
+
+.blog-post {
+  background-color: #1f1f1f;
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  align-self: center;
+}
+
+.blog-post .title {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.blog-post .title h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.post-date {
+  font-size: 0.95rem;
+  color: #aaaaaa;
+  font-weight: 500;
+}
+
+.post-figure {
+  margin: 0 0 2.5rem 0;
+  text-align: center;
+}
+
+.post-image {
+  width: 70%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  object-fit: cover;
+  margin: auto;
+}
+
+.post-caption {
+  margin-top: 0.8rem;
+  font-size: 0.88rem;
+  color: #cccccc;
+  font-style: italic;
+}
+
+.blog-post section h2 {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #ffffff;
+}
+
+.blog-post section p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: #e4e4e4;
+}
+
+.post-navigation {
+  margin-top: 3.5rem;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+  text-align: left;
+}
+
+.back-link {
+  color: #00aaff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.back-link:hover {
+  border-color: #00aaff;
+  color: #0077cc;
+}
+
+.toc {
+  align-self: flex-start;
+  width: 100%;
+}
+
+.toc h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc li {
+  margin: 0.7rem 0;
+}
+
+.toc a {
+  color: #96c7f2;
+  text-decoration: none;
+  font-size: 0.98rem;
+  transition: color 0.2s ease;
+}
+
+.toc a:hover {
+  color: #0077cc;
+  text-decoration: underline;
+}
+
+footer {
+  background-color: var(--primary);
+  padding: 15px 0 15px 0;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 1000;
+  border-radius: 100px 100px 0px 0px / 50px 50px 0px 0px;
+}
+
+footer #logo {
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: normal;
+  cursor: pointer;
+}
+
+footer #logo > a {
+  color: #fff;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-icons a {
+  color: #bbb;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 1160px) {
+  .btns-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1164px) {
+  .container {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  .blog-post {
+    width: 70%;
+  }
+  .blog-post .title h1 {
+    font-size: 2.2rem;
+  }
+  .blog-post section h2 {
+    font-size: 1.6rem;
+  }
+  .blog-post section p {
+    font-size: 1rem;
+  }
+  .post-box {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 0;
+  }
+  .blog-post {
+    border-radius: 8px;
+    box-shadow: none;
+    max-width: 100%;
+    width: 100%;
+    align-self: center;
+  }
+  .blog-post .title h1 {
+    font-size: 2rem;
+  }
+  .blog-post section h2 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+  .blog-post section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .post-navigation {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+  }
+  .post-box {
+    width: 100%;
+  }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .social {
+    font-size: 24px;
+  }
+  .navlinks {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 25px 0;
+    background-color: var(--primary);
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
+      rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+  }
+  footer {
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 10px 25px 10px 25px;
+    position: relative;
+    bottom: 0;
+    border-radius: 0;
+  }
+  .footer-left > #logo {
+    font-size: 12px;
+  }
+  .footer-icons {
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .service-box {
+    align-items: center;
+  }
+  .service-box i {
+    font-size: 2.2rem;
+  }
+  .blog {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-top: 0;
+  }
+  .post {
+    padding-top: 70px;
+  }
+  .blog-post .title h1 {
+    font-size: 1.8rem;
+  }
+  .blog-post section h2 {
+    font-size: 1.3rem;
+  }
+}
+</style>
 
     <!-- FontAwesome -->
-    <script
-      src="https://kit.fontawesome.com/615d6f4881.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
@@ -97,14 +628,14 @@
         "author": {
           "@type": "Person",
           "name": "Shoaib Akhtar",
-          "url": "https://growwith-shoby.web.app"
+          "url": "https://shoby-verse.web.app"
         },
         "publisher": {
           "@type": "Organization",
           "name": "GrowWithShoby",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://lh3.googleusercontent.com/d/1KjhkE74IgybsSj1kQD-JwPr2x3WiwEdZ"
+            "url": "https://shoby-verse.web.app/assets/images/logo.webp"
           }
         },
         "description": "Learn the top 5 essential SEO best practices to optimize your website for search engines: clear title tags, mobile-friendliness, fast load speed, high-quality content, and effective internal linking."
@@ -120,10 +651,10 @@
         <div class="nav">
           <div id="logo">
             <img
-              class="logoImg"
-              src="https://lh3.googleusercontent.com/d/1QfB9IrePohz2Q-a-8U4Lu13H-uLsN5oc"
-              alt="Site's logo refering to the start up growwithshoby"
-            />
+  class="logoImg"
+  src="/assets/images/logo.webp"
+  alt="Site's logo referring to the startup growwithshoby"
+/>
             <h2>
               <a href="/"> Shoby.<span style="font-size: 14px">Blogs</span> </a>
             </h2>
@@ -134,7 +665,7 @@
       <main class="blog post">
         <article class="blog-post">
           <nav style="padding-bottom: 40px">
-            <a href="/blog" class="back-link">← Back to Blog Posts</a>
+            <a href="/#blog" class="back-link">← Back to Blog Posts</a>
           </nav>
           <header class="title">
             <h1>Top 5 Essential SEO Best Practices for Your Website</h1>
@@ -144,10 +675,13 @@
           </header>
           <figure class="post-figure">
             <img
-              src="https://indiater.com/wp-content/uploads/2019/02/seo-for-business.jpg"
-              alt="Banner showing a man holding a search bar where SEO is written"
+              src="/assets/images/seo.webp"
+              alt="illustration with seo written on the banner"
               class="post-image"
+              width="840" 
+              height="420"
             />
+            <a style="font-size: 12px;color:#b8b8b8" href="https://www.freepik.com/free-vector/seo-analytics-team-concept-illustration_25921169.htm#fromView=keyword&page=1&position=1&query=Seo+Png">Image by storyset on Freepik</a>
             <figcaption class="post-caption">
               Optimizing your website with these key SEO best practices can
               significantly improve your online visibility.
@@ -257,7 +791,7 @@
           </section>
 
           <nav class="post-navigation">
-            <a href="/blog" class="back-link">← Back to Blog Posts</a>
+            <a href="/#blog" class="back-link">← Back to Blog Posts</a>
           </nav>
         </article>
       </main>
@@ -270,15 +804,19 @@
         <a
           href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing"
           target="_blank"
+          aria-label="Visit Shoaib Akhtar on LinkedIn"
           ><i class="fa-brands fa-linkedin"></i
         ></a>
-        <a href="https://twitter.com/" target="_blank"
+        <a href="https://twitter.com/ishoaib" target="_blank"
+          aria-label="Find Shoaib Akhtar on Twitter"
           ><i class="fa-brands fa-twitter"></i
         ></a>
         <a href="https://facebook.com/growwithshoby" target="_blank"
+          aria-label="get Shoaib Akhtar on Facebook"
           ><i class="fa-brands fa-facebook"></i
         ></a>
         <a href="https://instagram.com/growwithshoby" target="_blank"
+          aria-label="Visit Shoaib Akhtar brand's Instagram"
           ><i class="fa-brands fa-instagram"></i
         ></a>
       </div>
