@@ -29,12 +29,6 @@
   <link rel="preload" as="image" href="/assets/images/logo.webp" type="image/webp">
     <link rel="preload" as="image" href="/assets/images/seo.webp" type="image/webp" />
 
-  <!-- Preload CSS -->
-  <link rel="preload" href="/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/index.css"></noscript>
-
-
-
   <!-- Preload the Google Fonts stylesheet -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
 
@@ -101,6 +95,322 @@
     <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
 
     <style>
+      :root {
+  --primary-color: #f7f7f7;
+  --secondary-color: #fff;
+  --font-color: #2d2d2d;
+  --light-black: #d4d4d4;
+  --primary: #1f1f1f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-display:swap;
+}
+i {
+  color: var(--light-black);
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.navlink:hover {
+  text-decoration: underline;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--font-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 8px;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  color: var(--light-black);
+  scroll-behavior: smooth;
+  background-color: var(--primary);
+  font-family: "Poppins", sans-serif;
+  font-display:swap;
+}
+
+.container {
+  padding: 0 10px;
+  margin: auto;
+  position: relative;
+  width: 100%;
+  max-width: 1170px;
+}
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  z-index: 1000;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: var(--primary);
+  color: white;
+}
+.nav {
+  max-width: 1170px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+#logo > h2 > a {
+  font-style: italic;
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+}
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+#logo .logoImg {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.navlinks {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.navlink > a {
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.navlink > a:hover {
+  text-decoration: underline;
+}
+
+.btns-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 16px 26px;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+  color:var(--primary);
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.25s ease;
+}
+.btn:hover,
+.social > a > i:hover,
+.contact-btn:hover
+ {
+  transform: translateY(-5px);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid var(--light-black);
+  color: var(--primary-color);
+}
+
+.blog {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 550px;
+}
+
+.post-box {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  max-height: 230px;
+}
+
+.post-box:hover {
+  transform: translateY(-5px);
+}
+
+.post-image-preview {
+  height: 54%;
+  width: 100%;
+}
+
+.post-image-preview > img {
+  width: 100%;
+  height: fit-content;
+  display: block;
+  object-fit: cover;
+}
+.post-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px;
+  background-color: var(--primary);
+  align-self: center;
+  color: #fff;
+  height: 46%;
+}
+.post-title > h3 > a {
+  color: #fff;
+}
+
+.post-title > h3>  a:hover {
+  text-decoration: underline;
+}
+
+footer #logo {
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: normal;
+  cursor: pointer;
+}
+footer #logo > a {
+  color: #fff;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-icons a {
+  color: #aaa;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 1160px) {
+  .btns-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 860px) {
+  .container { 
+    padding: 0;
+  }
+  .posts {
+     flex-direction: column;
+     align-items: center;
+  }
+  .post-box {
+    height: 300px;
+  }
+  .post-title {
+    font-size: 14px;
+  }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .social {
+    font-size: 24px;
+  }
+  .navlinks {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 25px 0;
+    background-color: var(--primary);
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
+      rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+  }
+  
+  footer {
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 10px 25px 10px 25px;
+    position: relative;
+    bottom: 0;
+    border-radius: 0;
+  }
+  .footer-left > #logo {
+    font-size: 12px;
+  }
+  .footer-icons {
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .service-box {
+    align-items: center;
+  }
+  .service-box i {
+    font-size: 2.2rem;
+  }
+  .blog {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
       body,
 html {
   background-color: #2d2d2d;
@@ -310,11 +620,9 @@ html {
   }
 }
     </style>
-
     <!-- FontAwesome -->
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
-
 
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
