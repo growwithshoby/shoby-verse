@@ -27,13 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://ka-f.fontawesome.com" crossorigin>
   <link rel="preload" as="image" href="/assets/images/logo.webp" type="image/webp">
-    <link rel="preload" as="image" href="/assets/images/seo.webp" type="image/webp" />
-
-  <!-- Preload CSS -->
-  <link rel="preload" href="/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/index.css"></noscript>
-
-
+  <link rel="preload" as="image" href="/assets/images/seo.webp" type="image/webp" />
 
   <!-- Preload the Google Fonts stylesheet -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
@@ -101,12 +95,35 @@
     <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
 
     <style>
-      body,
-html {
-  background-color: #2d2d2d;
-  font-family: "Poppins", sans-serif;
-  font-display:swap;
+:root {
+  --primary-color: #f7f7f7;
+  --secondary-color: #fff;
+  --font-color: #2d2d2d;
+  --light-black: #d4d4d4;
+  --primary: #1f1f1f;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+  background-color: #2d2d2d;
+  color: var(--light-black);
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 .container {
   display: flex;
   gap: 2rem;
@@ -115,12 +132,74 @@ html {
   margin: 0 auto;
   align-items: flex-start;
 }
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary);
+  color: white;
+  z-index: 1000;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav {
+  max-width: 1170px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#logo > h2 > a {
+  font-style: italic;
+  color: #fff;
+  font-size: 22px;
+}
+
+#logo .logoImg {
+  width: 35px;
+  cursor: pointer;
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.navlink > a {
+  color: #fff;
+  transition: color 0.2s ease;
+}
+.navlink > a:hover {
+  text-decoration: underline;
+}
+
 .blog-post {
   background-color: #1f1f1f;
   padding: 2.5rem;
   border-radius: 12px;
   width: 100%;
   align-self: center;
+  color: var(--primary-color);
 }
 
 .blog-post .title {
@@ -140,6 +219,20 @@ html {
   font-size: 0.95rem;
   color: #777;
   font-weight: 500;
+}
+
+.blog-post section h2 {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.blog-post section p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
 }
 
 .post-figure {
@@ -163,25 +256,47 @@ html {
   font-style: italic;
 }
 
-.blog-post section h2 {
-  font-size: 1.4rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #f0f0f0;
+.toc {
+  align-self: flex-start;
+  width: 100%;
+  background: #2d2d2d;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.blog-post section p {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
+.toc h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc li {
+  margin: 0.7rem 0;
+}
+
+.toc a {
+  color: #7aa5cf;
+  font-size: 0.98rem;
+  transition: color 0.2s ease;
+}
+
+.toc a:hover {
+  color: #005bb5;
+  text-decoration: underline;
 }
 
 .post-navigation {
   margin-top: 3.5rem;
   border-top: 1px solid #eee;
   padding-top: 2rem;
-  text-align: left;
 }
 
 .back-link {
@@ -198,40 +313,44 @@ html {
   color: #005bb5;
 }
 
-.toc {
-  /* position: fixed;
-  top: 8rem; */
-  align-self: flex-start;
+footer {
+  background-color: var(--font-color);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px 25px;
+  flex-wrap: wrap;
 }
 
-.toc h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.5rem;
+footer #logo {
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.toc ul {
-  list-style: none;
-  padding-left: 0;
+footer #logo > a {
+  color: #fff;
 }
 
-.toc li {
-  margin: 0.7rem 0;
+.footer-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.toc a {
-  color: #7aa5cf;
-  text-decoration: none;
-  font-size: 0.98rem;
-  transition: color 0.2s ease;
+.footer-icons a {
+  color: #aaa;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
 }
 
-.toc a:hover {
-  color: #005bb5;
-  text-decoration: underline;
+.footer-icons a:hover {
+  color: white;
 }
+
 @media (max-width: 1164px) {
   .container {
     padding: 1.5rem;
@@ -243,17 +362,11 @@ html {
   .blog-post .title h1 {
     font-size: 2.2rem;
   }
-
   .blog-post section h2 {
     font-size: 1.6rem;
   }
-
   .blog-post section p {
     font-size: 1rem;
-  }
-
-  .post-box {
-    width: calc(50% - 20px);
   }
 }
 
@@ -264,58 +377,29 @@ html {
   }
   .blog-post {
     border-radius: 8px;
-    box-shadow: none;
     max-width: 100%;
-    width: 100%;
-    align-self: center;
   }
-
   .blog-post .title h1 {
     font-size: 2rem;
   }
-
   .blog-post section h2 {
     font-size: 1.4rem;
     margin-top: 2rem;
   }
-
-  .blog-post section p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  .post-navigation {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-  }
-
-  .post-box {
-    width: 100%;
-  }
 }
 
 @media (max-width: 600px) {
-  .container {
-    padding-top: 0;
-  }
-  .post {
-    padding-top: 70px;
-  }
   .blog-post .title h1 {
     font-size: 1.8rem;
   }
-
   .blog-post section h2 {
     font-size: 1.3rem;
   }
 }
-    </style>
-
+</style>
     <!-- FontAwesome -->
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
-
-
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
       {
