@@ -35,6 +35,9 @@
   <!-- Load it asynchronously to avoid render-blocking -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" media="print" onload="this.media='all'">
+   <link rel="preload" href="/index.css" as="style">
+  <link rel="stylesheet" href="/index.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/index.css"></noscript>
 
   <!-- Fallback for no-JS users -->
   <noscript>
@@ -95,14 +98,6 @@
     <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
 
    <style>
-:root {
-  --primary-color: #f7f7f7;
-  --secondary-color: #fff;
-  --font-color: #2d2d2d;
-  --light-black: #bbbbbb; /* improved contrast */
-  --primary: #1f1f1f;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -138,9 +133,9 @@ body,
 html {
   width: 100%;
   height: 100%;
-  color: var(--light-black);
+  background-color: #0f0f0f; /* hardcoded instead of var(--primary) */
+  color: #d4d4d4;
   scroll-behavior: smooth;
-  background-color: var(--font-color);
 }
 
 .container {
@@ -244,8 +239,8 @@ html {
   border: 1px solid var(--light-black);
   color: var(--primary-color);
 }
-
-.blog {
+.blog-page {
+  font-size:18px;
   padding-top: 80px;
   display: flex;
   flex-direction: column;
@@ -256,52 +251,12 @@ html {
   margin: 0 auto;
 }
 
-.posts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 20px;
-  justify-content: flex-start;
-  width: 100%;
-  min-height: 550px;
-}
-
-.post-box {
-  background-color: #2d2d2d;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 350px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease;
-  max-height: 230px;
-}
-
-.post-box:hover {
-  transform: translateY(-5px);
-}
-
-.post-image-preview {
-  height: 54%;
-  width: 100%;
-}
-
-.post-image-preview > img {
-  width: 100%;
-  height: fit-content;
-  display: block;
-  object-fit: cover;
-}
-
 .post-title {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   padding: 15px;
-  background-color: var(--primary);
   align-self: center;
   color: #f0f0f0; /* improved */
   height: 46%;
@@ -316,7 +271,6 @@ html {
 }
 
 .blog-post {
-  background-color: #1f1f1f;
   padding: 2.5rem;
   border-radius: 12px;
   width: 100%;
@@ -331,7 +285,7 @@ html {
 
 .blog-post .title h1 {
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   line-height: 1.2;
   margin-bottom: 0.5rem;
   color: #ffffff;
@@ -349,7 +303,7 @@ html {
 }
 
 .post-image {
-  width: 70%;
+  width: 50%;
   height: auto;
   border-radius: 10px;
   display: block;
@@ -365,7 +319,7 @@ html {
 }
 
 .blog-post section h2 {
-  font-size: 1.4rem;
+  font-size: 1rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
@@ -434,180 +388,6 @@ html {
   color: #0077cc;
   text-decoration: underline;
 }
-
-footer {
-  background-color: var(--primary);
-  padding: 15px 0 15px 0;
-  width: 100%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  z-index: 1000;
-  border-radius: 100px 100px 0px 0px / 50px 50px 0px 0px;
-}
-
-footer #logo {
-  font-size: 1rem;
-  font-weight: bold;
-  font-style: normal;
-  cursor: pointer;
-}
-
-footer #logo > a {
-  color: #fff;
-}
-
-.footer-icons {
-  display: flex;
-  gap: 20px;
-}
-
-.footer-icons a {
-  color: #bbb;
-  font-size: 1.3rem;
-  transition: color 0.3s ease;
-}
-
-.footer-icons a:hover {
-  color: white;
-}
-
-/* Responsive */
-@media (max-width: 1160px) {
-  .btns-container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (max-width: 1164px) {
-  .container {
-    padding: 1.5rem;
-    gap: 1.5rem;
-  }
-  .blog-post {
-    width: 70%;
-  }
-  .blog-post .title h1 {
-    font-size: 2.2rem;
-  }
-  .blog-post section h2 {
-    font-size: 1.6rem;
-  }
-  .blog-post section p {
-    font-size: 1rem;
-  }
-  .post-box {
-    width: calc(50% - 20px);
-  }
-}
-
-@media (max-width: 900px) {
-  .container {
-    flex-direction: column;
-    padding: 0;
-  }
-  .blog-post {
-    border-radius: 8px;
-    box-shadow: none;
-    max-width: 100%;
-    width: 100%;
-    align-self: center;
-  }
-  .blog-post .title h1 {
-    font-size: 2rem;
-  }
-  .blog-post section h2 {
-    font-size: 1.4rem;
-    margin-top: 2rem;
-  }
-  .blog-post section p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-  .post-navigation {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-  }
-  .post-box {
-    width: 100%;
-  }
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-  }
-  .hamburger span {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-  .social {
-    font-size: 24px;
-  }
-  .navlinks {
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 25px 0;
-    background-color: var(--primary);
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
-      rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
-  }
-  footer {
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    padding: 10px 25px 10px 25px;
-    position: relative;
-    bottom: 0;
-    border-radius: 0;
-  }
-  .footer-left > #logo {
-    font-size: 12px;
-  }
-  .footer-icons {
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .service-box {
-    align-items: center;
-  }
-  .service-box i {
-    font-size: 2.2rem;
-  }
-  .blog {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-}
-
-@media (max-width: 600px) {
-  .container {
-    padding-top: 0;
-  }
-  .post {
-    padding-top: 70px;
-  }
-  .blog-post .title h1 {
-    font-size: 1.8rem;
-  }
-  .blog-post section h2 {
-    font-size: 1.3rem;
-  }
-}
 </style>
 
     <!-- FontAwesome -->
@@ -646,7 +426,7 @@ footer #logo > a {
     <script src="/main.js" defer></script>
   </head>
   <body>
-    <section class="container">
+    <section class="blog-container">
       <nav class="nav-bar">
         <div class="nav">
           <div id="logo">
@@ -662,7 +442,7 @@ footer #logo > a {
           <a href="/" style="color: #fff">Know the author</a>
         </div>
       </nav>
-      <main class="blog post">
+      <main class="blog-page post">
         <article class="blog-post">
           <nav style="padding-bottom: 40px">
             <a href="/#blog" class="back-link">← Back to Blog Posts</a>
@@ -797,28 +577,28 @@ footer #logo > a {
       </main>
     </section>
     <footer>
+      <div class="contain">
       <div class="footer-left">
-        <span id="logo">© | GrowWithShoby</span>
+        <span id="logo"><a href="https://growwith-shoby.web.app/">© | GrowWithShoby</a></span>
       </div>
       <div class="footer-icons">
-        <a
-          href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing"
-          target="_blank"
-          aria-label="Visit Shoaib Akhtar on LinkedIn"
+        <a href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing/" target="_blank"
+         aria-label="LinkedIn"
           ><i class="fa-brands fa-linkedin"></i
         ></a>
-        <a href="https://twitter.com/ishoaib" target="_blank"
-          aria-label="Find Shoaib Akhtar on Twitter"
+        <a href="https://twitter.com/ishoa1b" target="_blank"
+         aria-label="Twitter"
           ><i class="fa-brands fa-twitter"></i
         ></a>
-        <a href="https://facebook.com/growwithshoby" target="_blank"
-          aria-label="get Shoaib Akhtar on Facebook"
+        <a href="https://www.facebook.com/people/Growwithshoby/61575839828906/" target="_blank"
+         aria-label="Facebook"
           ><i class="fa-brands fa-facebook"></i
         ></a>
         <a href="https://instagram.com/growwithshoby" target="_blank"
-          aria-label="Visit Shoaib Akhtar brand's Instagram"
+         aria-label="Instagram"
           ><i class="fa-brands fa-instagram"></i
         ></a>
+      </div>
       </div>
     </footer>
   </body>

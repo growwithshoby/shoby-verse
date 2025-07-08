@@ -33,6 +33,9 @@
 
   <!-- Preload the Google Fonts stylesheet -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+  <link rel="preload" href="/index.css" as="style">
+  <link rel="stylesheet" href="/index.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/index.css"></noscript>
 
   <!-- Load it asynchronously to avoid render-blocking -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -100,18 +103,9 @@
 
 </script>
   <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/615d6f4881.js" crossorigin="anonymous" async></script>
-  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous">
   <style>
-    :root {
-  --primary-color: #f7f7f7;
-  --secondary-color: #fff;
-  --font-color: #2d2d2d;
-  --light-black: #d4d4d4;
-  --primary: #1f1f1f;
-}
-
-* {
+    * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -136,14 +130,16 @@ a {
   background: var(--primary);
   border-radius: 8px;
 }
-
+.page-hidden {
+    visibility: hidden;
+  }
 body,
 html {
   width: 100%;
   height: 100%;
-  color: var(--light-black);
   scroll-behavior: smooth;
-  background-color: var(--primary);
+  background-color: #0f0f0f; /* hardcoded instead of var(--primary) */
+  color: #d4d4d4;
   font-family: "Poppins", sans-serif;
   font-display:swap;
 }
@@ -155,26 +151,46 @@ html {
   width: 100%;
   max-width: 1170px;
 }
+.gradient-wrapper {
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;/* wrapper takes no space */
+  z-index: 0;
+}
 
-.bg-gradient {
+/* .first replacement */
+.gradient-wrapper::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 700px;
   background: var(--primary);
-  border-radius: 0px 0px 150px 150px / 0px 0px 75px 75px;
+  border-radius: 0 0 150px 150px / 0 0 75px 75px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
-.second {
-  background-color: #2d2d2d;
-  top:450px
-}
-.third {
-  top: 1540px;
-  height: 1240px;
-  border-radius: 0;
-  border-radius: 150px 150px 150px 150px / 75px 75px 75px 75px;
+
+/* .second replacement */
+.gradient-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 450px;
+  left: 0;
+  height: 700px;
+  width: 100%;
   background-color: var(--font-color);
+  border-radius: 150px / 75px;
+  z-index: -1;
+}
+.third-bg {
+  position: absolute;
+  top: 1540px;
+  left: 0;
+  width: 100%;
+  height: 1240px;
+  background-color: var(--font-color);
+  border-radius: 150px / 75px;
   z-index: -1;
 }
 .nav-bar {
@@ -292,7 +308,7 @@ html {
   border: none;
   cursor: pointer;
   border-radius: 30px;
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease;
 }
 .btn:hover,
 .social > a > i:hover,
@@ -320,484 +336,23 @@ html {
 }
 .social > a > i {
   color: var(--primary-color);
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 #about {
   width: 100%;
   scroll-margin-top: 170px;
 }
-
-#about > h2,
-#services > h2,
-#contacts > h2,
-.blog > h2,
-.qualifications > h2 {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 25px;
-  color: var(--light-black);
-}
-
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  border-top: 2px solid var(--light-black);
-}
-
-.about-me {
-  padding-top: 20px;
-  flex: 1 1 60%;
-  font-size: 1rem;
-  line-height: 1.5;
-  text-align: justify;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  color: var(--light-black);
-}
-
-.qualifications {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-  padding-top: 140px;
-  
-}
-
-.certifications {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.certificates {
-  width: 250px;
-  height: 170px;
-  padding: 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  gap: 5px;
-  margin-bottom: 100px;
-}
-
-.certificates > p {
-  font-size: 16px;
-}
-
-.certificates > i {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-#services {
-  width: 100%;
-  padding: 30px 0;
-  scroll-margin-top: 60px;
-}
-.about-content > section {
-  padding-top: 50px ;
-}
-.services-scroll-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 60px;
-  justify-content: center;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding-bottom: 10px;
-}
-
-.service-box {
-  flex: 0 0 auto;
-  width: 240px;
-  height: 200px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  scroll-snap-align: start;
-  gap: 10px;
-}
-
-.service-box i {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.service-box p {
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.blog {
-  padding-top: 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.posts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 20px;
-  justify-content: flex-start;
-  width: 100%;
-  min-height: 550px;
-}
-
-.post-box {
-  background-color: #2d2d2d;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 350px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease;
-  max-height: 230px;
-}
-
-.post-box:hover {
-  transform: translateY(-5px);
-}
-
-.post-image-preview {
-  height: 54%;
-  width: 100%;
-}
-
-.post-image-preview > img {
-  width: 100%;
-  height: fit-content;
-  display: block;
-  object-fit: cover;
-}
-.post-title {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  padding: 15px;
-  background-color: var(--primary);
-  align-self: center;
-  color: #fff;
-  height: 46%;
-}
-.post-title > h3 > a {
-  color: #fff;
-}
-
-.post-title > h3>  a:hover {
-  text-decoration: underline;
-}
-
-#contact {
-  width: 100%;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 60px;
-  font-size: 1.2rem;
-  margin: 100px 0 50px 0;
-}
-
-.contacts {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
-}
-.contact-text {
-  text-align: center;
-}
-
-.contact-btn {
-  font-size: 16px;
-  background-color: var(--secondary-color);
-  color: var(--primary);
-  width: 200px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  border-radius: 30px;
-  transition: all 0.25s ease;
-}
-.contact-btn > i {
-  color: var(--primary);
-  font-size: 22px;
-}
-.contain {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  flex-wrap: wrap;
-  max-width: 1170px;
-}
-footer {
-  background-color: var(--font-color);
-  margin: auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  border-radius: 100px 100px 0px 0px / 50px 50px 0px 0px;
-}
-
-footer #logo {
-  font-size: 1rem;
-  font-weight: bold;
-  font-style: normal;
-  cursor: pointer;
-}
-footer #logo > a {
-  color: #fff;
-}
-
-.footer-icons {
-  display: flex;
-  gap: 20px;
-}
-
-.footer-icons a {
-  color: #aaa;
-  font-size: 1.3rem;
-  transition: color 0.3s ease;
-}
-
-.footer-icons a:hover {
-  color: white;
-}
-@media (max-width: 1260px) {
-  .about-me {
-    width: 80%;
-    text-align: justify;
-    font-size: 16px;
-  }
-  .about-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .third {
-    top: 1560px;
-    height: 1260px;
-  }
-  .service-box {
-    align-items: center;
-  }
-}
-
-
-/* Responsive Styles */
-@media (max-width: 1160px) {
-  .intro-text {
-    font-size: 16px;
-    width: 90%;
-  }
-  .name {
-    font-size: 2.5rem;
-  }
-  .about-me { 
-    width: 90%;
-  }
-  .certificates {
-    width: 80%;
-    max-width: 300px;
-  }
-
-  .btns-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .first {
-    height: 750px;
-  }
-  .second {
-    top: 550px;
-  }
-  .third {
-    top: 1900px;
-    height: 1650px;
-  }
-}
-
-@media (max-width: 860px) {
-  .container { 
-    padding: 0;
-  }
-  .posts {
-     flex-direction: column;
-     align-items: center;
-  }
-  .post-box {
-    height: 300px;
-  }
-  .post-title {
-    font-size: 14px;
-  }
-  #home,
-  #about {
-    padding: 100px 10px 0 10px;
-    margin-bottom: 0;
-  }
-  .qualifications {
-    padding-top:100px ;
-  }
-  #about > h2 {
-    font-size: 2rem;
-  }
-  .about-me {
-    width: 90%;
-    font-size: 14px;
-  }
-  .intro-text {
-    width: 100%;
-    font-size: 16px;
-  }
-  .name {
-    font-size: 2.2rem;
-  }
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-  }
-  .hamburger span {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-  .social {
-    font-size: 24px;
-  }
-  .navlinks {
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 25px 0;
-    background-color: var(--primary);
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
-      rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
-  }
-  .first {
-    height: 680px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  }
-  .third,
-  .second {
-    display: none;
-  }
-  #services, #contact{
-    background-color: #2d2d2d;
-    padding: 0 10px 0 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  #services {
-    border-radius: 150px 150px 0px 0px / 75px 75px 0px 0px;
-  }
-  .contact-text {
-    padding-top: 25px;
-  }
-  #services > h2 {
-    padding-top: 25px ;
-  }
-  .navlinks.active {
-    display: flex;
-    opacity: 1;
-  }
-  .contacts {
-    flex-direction: column;
-    gap: 50px;
-    font-size: 1.3rem;
-  }
-  footer {
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    padding: 10px 25px 10px 25px;
-    position: relative;
-    bottom: 0;
-    border-radius: 0;
-  }
-  .footer-left > #logo {
-    font-size: 12px;
-  }
-  .footer-icons {
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .service-box {
-    align-items: center;
-  }
-  .service-box i {
-    font-size: 2.2rem;
-  }
-  .blog {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-}
-
-@media (max-width: 479px) {
-  .first {
-    height: 720px;
-  }
-  #home {
-    padding-top: 90px;
-  }
-  .intro-text {
-    font-size: 1rem;
-  }
-.contact-btn > i {
-  font-size: 22px;
-}
-  .post-box {
-    width: 300px;}
-}
   </style>
-
   <!-- Main JavaScript -->
   <script src="/main.js" defer></script>
 </head>
 
-  <body>
+  <body class="page-hidden">
 <!-- End Google Tag Manager (noscript) -->
-    <div class="bg-gradient third"></div>
-    <div id="second" class="bg-gradient second"></div>
-    <div class="bg-gradient first"></div>    
+ <div class="gradient-wrapper">
+  <div class="third-bg"></div> 
+ </div>   
     <nav class="nav-bar">
       <div class="nav">
         <div id="logo">
@@ -829,7 +384,7 @@ footer #logo > a {
     <main class="container">
       <section id="home">
         <div class="profile-container">
-          <img src="/assets/images/hero.webp" alt="A picture of Shoaib Akhtar" loading="lazy" />
+          <img src="/assets/images/hero.webp" alt="A picture of Shoaib Akhtar" loading="lazy"  width="150" height="150" />
         </div>
         <div class="intro-text">
           <p>Hi, i'm</p>
@@ -982,7 +537,7 @@ footer #logo > a {
         <div class="posts">
             <div class="post-box">
               <div class="post-image-preview">
-                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9imoqoxiyal81mq8uljh.jpeg" alt="Intro panel of the brand growwithshoby with a tagline let us grow your business" loading="lazy">
+                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9imoqoxiyal81mq8uljh.jpeg" alt="Intro panel of the brand growwithshoby with a tagline let us grow your business" loading="lazy" width="350" height="460">
               </div>
               <div class="post-title">
                 <h3><a href="https://medium.com/@growwithshoby/meet-shoaib-akhtar-the-mind-behind-growwithshoby-a-rising-name-in-digital-marketing-8b9cd48666eb" target="__blank">Meet Shoaib Akhtar: The mind behind Growwithshoby</a></h3>
@@ -990,14 +545,14 @@ footer #logo > a {
             </div>
             <div class="post-box">
               <div class="post-image-preview">
-                <img src="assets/images/hero.webp" alt="Image of the author Shoaib Akhtar" loading="lazy">
+                <img src="assets/images/hero.webp" alt="Image of the author Shoaib Akhtar" loading="lazy" width="350" height="460">
               </div>
               <div class="post-title">
                 <h3><a href="https://dev.to/shoa1bdev/shoaib-akhtar-my-journey-starting-growwithshoby-52dc" target="__blank">Shoaib Akhtar: Digital Marketing Journey</a></h3></div>
             </div>
             <div class="post-box">
               <div class="post-image-preview">
-                <img rel src="https://indiater.com/wp-content/uploads/2019/02/seo-for-business.jpg" alt="Banner showing a man holding a search bar where SEO is written" loading="lazy">
+                <img rel src="https://indiater.com/wp-content/uploads/2019/02/seo-for-business.jpg" alt="Banner showing a man holding a search bar where SEO is written" loading="lazy" width="350" height="460">
               </div>
               <div class="post-title"><h3><a href="/blog/top-five-seo-practice">Top 5 Best Practices for Seo for your websites</a></h3></div>
             </div>
