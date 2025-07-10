@@ -1,3 +1,6 @@
+window.onload = function () {
+    document.body.classList.remove('page-hidden');
+  };
 document.addEventListener('DOMContentLoaded', () => {
   // ✅ Handle Hamburger toggle if present
   const hamburger = document.getElementById('hamburger');
