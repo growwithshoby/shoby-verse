@@ -1,32 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G01D6865YD"></script>
-<script>
+  <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  function gtag(){ dataLayer.push(arguments); }
 
-  gtag('config', 'G-G01D6865YD');
+  // Lazy-load GA after page load (non-blocking)
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var gtagScript = document.createElement('script');
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-G01D6865YD';
+      gtagScript.async = true;
+      document.head.appendChild(gtagScript);
+
+      gtag('js', new Date());
+      gtag('config', 'G-G01D6865YD'); // You can also add { 'send_page_view': false } here if needed
+    }, 1500); // Load after 1.5s or adjust as needed
+  });
 </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta name="robots" content="index, follow" />
     <title>Top 5 SEO Best Practices for Your Website | Shoaib Akhtar</title>
+   <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ka-f.fontawesome.com" crossorigin>
+  <link rel="preload" as="image" href="/assets/images/logo.webp" type="image/webp">
+    <link rel="preload" as="image" href="/assets/images/seo.webp" type="image/webp" />
+
+  <!-- Preload the Google Fonts stylesheet -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+
+  <!-- Load it asynchronously to avoid render-blocking -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" media="print" onload="this.media='all'">
+   <link rel="preload" href="/index.css" as="style">
+  <link rel="stylesheet" href="/index.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/index.css"></noscript>
+
+  <!-- Fallback for no-JS users -->
+  <noscript>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </noscript>
     <meta
       name="description"
-      content="Five essential SEO best practices to boost your site's visibility: clear title tags, mobile optimization, fast load time, high-quality content, and strong internal linking."
-    />
-    <meta
-      name="keywords"
-      content="SEO Best Practices, Shoaib Akhtar, GrowWithShoby, SEO tips, website optimization, digital marketing Kolkata"
+      content="Five essential SEO best practices to boost your site's visibility: clear title tags, mobile optimization, fast load time,and more."
     />
     <meta name="author" content="Shoaib Akhtar" />
 
     <!-- Canonical & Theme -->
-    <link rel="canonical" href="https://growwith-shoby.web.app/blog/post1" />
-    <meta name="theme-color" content="#000000" />
+    <link rel="canonical" href="https://shoby-verse.web.app/blog/top-five-seo-practice" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- Open Graph for Facebook/LinkedIn -->
     <meta
@@ -39,11 +64,11 @@
     />
     <meta
       property="og:image"
-      content="https://lh3.googleusercontent.com/d/1QfB9IrePohz2Q-a-8U4Lu13H-uLsN5oc"
+      content="/assets/images/og_banner.webp"
     />
     <meta
       property="og:url"
-      content="https://growwith-shoby.web.app/blog/post1"
+      content="https://shoby-verse.web.app/blog/top-five-seo-practice"
     />
     <meta property="og:type" content="article" />
     <meta
@@ -67,21 +92,307 @@
     />
     <meta
       name="twitter:image"
-      content="https://lh3.googleusercontent.com/d/1QfB9IrePohz2Q-a-8U4Lu13H-uLsN5oc"
+      content="https://shoby-verse.web.app/assets/images/og_banner.webp"
     />
-
     <!-- Favicon -->
     <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/index.css" />
-    <link rel="stylesheet" href="/blog.css" />
+   <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-display: swap;
+}
+
+i {
+  color: var(--light-black);
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.navlink:hover {
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--font-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 8px;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #0f0f0f; /* hardcoded instead of var(--primary) */
+  color: #d4d4d4;
+  scroll-behavior: smooth;
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+  z-index: 1000;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: white;
+}
+
+.nav {
+  max-width: 1170px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+#logo > h2 > a {
+  font-style: italic;
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#logo .logoImg {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.navlink > a {
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.navlink > a:hover {
+  text-decoration: underline;
+}
+
+.btns-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 16px 26px;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--primary);
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.25s ease;
+}
+
+.btn:hover,
+.social > a > i:hover,
+.contact-btn:hover {
+  transform: translateY(-5px);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid var(--light-black);
+  color: var(--primary-color);
+}
+.blog-page {
+  font-size:18px;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.post-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px;
+  align-self: center;
+  color: #f0f0f0; /* improved */
+  height: 46%;
+}
+
+.post-title > h3 > a {
+  color: #f0f0f0;
+}
+
+.post-title > h3 > a:hover {
+  text-decoration: underline;
+}
+
+.blog-post {
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  align-self: center;
+}
+
+.blog-post .title {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.blog-post .title h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.post-date {
+  font-size: 0.95rem;
+  color: #aaaaaa;
+  font-weight: 500;
+}
+
+.post-figure {
+  margin: 0 0 2.5rem 0;
+  text-align: center;
+}
+
+.post-image {
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  object-fit: cover;
+  margin: auto;
+}
+
+.post-caption {
+  margin-top: 0.8rem;
+  font-size: 0.88rem;
+  color: #cccccc;
+  font-style: italic;
+}
+
+.blog-post section h2 {
+  font-size: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #ffffff;
+}
+
+.blog-post section p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: #e4e4e4;
+}
+
+.post-navigation {
+  margin-top: 3.5rem;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+  text-align: left;
+}
+
+.back-link {
+  color: #00aaff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.back-link:hover {
+  border-color: #00aaff;
+  color: #0077cc;
+}
+
+.toc {
+  align-self: flex-start;
+  width: 100%;
+}
+
+.toc h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc li {
+  margin: 0.7rem 0;
+}
+
+.toc a {
+  color: #96c7f2;
+  text-decoration: none;
+  font-size: 0.98rem;
+  transition: color 0.2s ease;
+}
+
+.toc a:hover {
+  color: #0077cc;
+  text-decoration: underline;
+}
+</style>
 
     <!-- FontAwesome -->
-    <script
-      src="https://kit.fontawesome.com/615d6f4881.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
@@ -97,14 +408,14 @@
         "author": {
           "@type": "Person",
           "name": "Shoaib Akhtar",
-          "url": "https://growwith-shoby.web.app"
+          "url": "https://shoby-verse.web.app"
         },
         "publisher": {
           "@type": "Organization",
           "name": "GrowWithShoby",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://lh3.googleusercontent.com/d/1KjhkE74IgybsSj1kQD-JwPr2x3WiwEdZ"
+            "url": "https://shoby-verse.web.app/assets/images/logo.webp"
           }
         },
         "description": "Learn the top 5 essential SEO best practices to optimize your website for search engines: clear title tags, mobile-friendliness, fast load speed, high-quality content, and effective internal linking."
@@ -115,15 +426,15 @@
     <script src="/main.js" defer></script>
   </head>
   <body>
-    <section class="container">
+    <section class="blog-container">
       <nav class="nav-bar">
         <div class="nav">
           <div id="logo">
             <img
-              class="logoImg"
-              src="https://lh3.googleusercontent.com/d/1QfB9IrePohz2Q-a-8U4Lu13H-uLsN5oc"
-              alt="Site's logo refering to the start up growwithshoby"
-            />
+  class="logoImg"
+  src="/assets/images/logo.webp"
+  alt="Site's logo referring to the startup growwithshoby"
+/>
             <h2>
               <a href="/"> Shoby.<span style="font-size: 14px">Blogs</span> </a>
             </h2>
@@ -131,10 +442,10 @@
           <a href="/" style="color: #fff">Know the author</a>
         </div>
       </nav>
-      <main class="blog post">
+      <main class="blog-page post">
         <article class="blog-post">
           <nav style="padding-bottom: 40px">
-            <a href="/blog" class="back-link">← Back to Blog Posts</a>
+            <a href="/#blog" class="back-link">← Back to Blog Posts</a>
           </nav>
           <header class="title">
             <h1>Top 5 Essential SEO Best Practices for Your Website</h1>
@@ -144,10 +455,13 @@
           </header>
           <figure class="post-figure">
             <img
-              src="https://indiater.com/wp-content/uploads/2019/02/seo-for-business.jpg"
-              alt="Banner showing a man holding a search bar where SEO is written"
+              src="/assets/images/seo.webp"
+              alt="illustration with seo written on the banner"
               class="post-image"
+              width="840" 
+              height="420"
             />
+            <a style="font-size: 12px;color:#b8b8b8" href="https://www.freepik.com/free-vector/seo-analytics-team-concept-illustration_25921169.htm#fromView=keyword&page=1&position=1&query=Seo+Png">Image by storyset on Freepik</a>
             <figcaption class="post-caption">
               Optimizing your website with these key SEO best practices can
               significantly improve your online visibility.
@@ -257,30 +571,34 @@
           </section>
 
           <nav class="post-navigation">
-            <a href="/blog" class="back-link">← Back to Blog Posts</a>
+            <a href="/#blog" class="back-link">← Back to Blog Posts</a>
           </nav>
         </article>
       </main>
     </section>
     <footer>
+      <div class="contain">
       <div class="footer-left">
-        <span id="logo">© | GrowWithShoby</span>
+        <span id="logo"><a href="https://growwith-shoby.web.app/">© | GrowWithShoby</a></span>
       </div>
       <div class="footer-icons">
-        <a
-          href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing"
-          target="_blank"
+        <a href="https://www.linkedin.com/in/shoaibakhtar-digitalmarketing/" target="_blank"
+         aria-label="LinkedIn"
           ><i class="fa-brands fa-linkedin"></i
         ></a>
-        <a href="https://twitter.com/" target="_blank"
+        <a href="https://twitter.com/ishoa1b" target="_blank"
+         aria-label="Twitter"
           ><i class="fa-brands fa-twitter"></i
         ></a>
-        <a href="https://facebook.com/growwithshoby" target="_blank"
+        <a href="https://www.facebook.com/people/Growwithshoby/61575839828906/" target="_blank"
+         aria-label="Facebook"
           ><i class="fa-brands fa-facebook"></i
         ></a>
         <a href="https://instagram.com/growwithshoby" target="_blank"
+         aria-label="Instagram"
           ><i class="fa-brands fa-instagram"></i
         ></a>
+      </div>
       </div>
     </footer>
   </body>
